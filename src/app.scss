@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background-image: url("https://www.teahub.io/photos/full/28-285955_enjoy-25-gorgeous-new-macos-mojave-wallpapers-osxdaily.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  max-width: 375px;
+	width: 100vw;
+  max-height: 725px;
+	height: 100vh;
+  overflow: auto;
+  background-color: #1d1930;
+  text-align: center;
+  border: 6px solid #0b1228;
+  border-radius: 30px;
+  position: relative;
+}
+
+h1 {
+  margin: 32px 0;
+  color: #fff;
+  font-size: 24px;
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+  color: #fff;
+}
+
+.todo-form {
+	width: 100%;
+	padding: 0 24px 16px;
+	display: flex;
+	align-items: center;
+	background-color: #1d1930;
+	position: sticky;
+	top: 126px;
+	z-index: 2;
+}
+
+.todo-wrapper {
+	padding: 0 24px 30px;
+  font-size: 14px;
+  position: relative;
+
+  &:empty {
+    content: "'sdfsdf'";
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-checkup-list' width='44' height='44' viewBox='0 0 24 24' stroke-width='.8' stroke='%23513fc0b5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Crect x='9' y='3' width='6' height='4' rx='2' /%3E%3Cpath d='M9 14h.01' /%3E%3Cpath d='M9 17h.01' /%3E%3Cpath d='M12 16l1 1l3 -3' /%3E%3C/svg%3E");
+    width: 80px;
+    height: 80px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
+}
+
+.update-form {
+	margin-bottom: 8px;
+	padding: 0;
+	display: none;
+}
+
+.todo-input {
+  padding: 0 12px;
+	height: 44px;
+	width: 100%;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  background: #2c2f49;
+  color: #fff;
+}
+
+.todo-input::placeholder {
+  color: #c7c7c7;
+  font-size: 14px;
+}
+
+.todo-button {
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+	height: 44px;
+  padding: 0 14px;
+  flex-shrink: 0;
+	display: flex;
+	align-items: center;
+  color: #fff;
+  background-color: #513fc0;
+  transition: .3s;
+
+  svg {
+    width: 20px;
+  }
+
+  &:hover {
+    background-color: #4935c0;
+  }
+}
+
+.todo-input.edit {
+  border: 1px solid #513fc0;
+	border-radius: 4px;
+}
+
+.todo-button.edit {
+  background-image: linear-gradient(to right top, #14151c, #191f42, #272668, #42278c, #6a1bac);
+  padding: 16px 22px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.edited-text {
+  color: #fff;
+}
+
+.edited-row {
+	.edited-text,
+	.icons {
+		display: none;
+	}
+
+	.update-form {
+		display: block;
+	}
+}
+
+.menu {
+	color: #fff;
+}
+
+.todo-row-wrapper {
+  margin: 8px 0;
+  border-radius: 4px;
+  background-color: #cc5b64;
+
+  &:nth-child(4n + 1) {
+    background-color: #c990b5;
+  }
+
+  &:nth-child(4n + 2) {
+    background-color: #8379e0;
+  }
+
+  &:nth-child(4n + 3) {
+    background-color: #7aa7dc;
+  }
+}
+
+.todo-row {
+  padding: 0 12px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &:hover .icons {
+    opacity: 1;
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transition: .2s;
+}
+
+.delete-icon {
+  margin-right: 5px;
+  color: #fff;
+}
+
+.edit-icon {
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 42px 24px;
+	width: 100%;
+  color: #fff;
+  position: sticky;
+  top: 0;
+	z-index: 2;
+  background-color: #1d1930;
+
+  &-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+		object-position: 0px -4px;
+    border-radius: 50%;
+    border: 1px solid #b8b8b9;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-user {
+    font-size: 14px;
+    color: #b8b8b9;
+    margin-bottom: 6px;
+  }
+
+  &-date {
+    font-size: 20px;
+  }
+}
+
+.slider-title {
+  font-size: 15px;
+  padding: 0 24px;
+  margin-bottom: 12px;
+  color: #fff;
+  text-align: left;
+}
+
+.swiper-pointer-events {
+  padding: 0 24px 12px !important;
+}
+
+.swiper-slide img {
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
